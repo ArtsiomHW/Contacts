@@ -14,24 +14,17 @@ struct Contact {
     let phoneNumber: String
     let email: String
     
-<<<<<<< HEAD:ListOfContacts/Contact.swift
-    static func getUniqueContact(name: [String], surname: [String], phoneNumber: [String], email: [String]) -> [Contact] {
-            var usedCombinations: [[String]] = []
-            var fullContact: [Contact] = []
-=======
     var fullname: String {
         "\(name) \(surname)"
     }
-
+    
     static func getUniqueContact() -> [Contact] {
- 
+        
         let uniqueContact = DataStore.sharedData
         let name = uniqueContact.names
         let surname = uniqueContact.surnames
         let phoneNumber = uniqueContact.phoneNumbers
         let email = uniqueContact.emails
-        
-
         
         let minNumOfIteration = min(
             name.count,
@@ -40,14 +33,11 @@ struct Contact {
             email.count
         )
         
-        var usedIndex: Set<Int> = []
         var fullContact: [Contact] = []
-        
+        var usedCombinations: [[String]] = []
         
         
         while fullContact.count < minNumOfIteration {
-            let randomIndex = Int.random(in: 0..<minNumOfIteration)
->>>>>>> 6b3adaa (Fixed navigation):ListOfContacts/Models/Contact.swift
             
             while fullContact.count < min(name.count, surname.count, phoneNumber.count, email.count) {
                 let randomNameIndex = Int.random(in: 0..<name.count)
@@ -69,9 +59,9 @@ struct Contact {
                     fullContact.append(newContact)
                 }
             }
-        
-            return fullContact
-        }
+            
+        }        
+        return fullContact
+    }
     
 }
-
